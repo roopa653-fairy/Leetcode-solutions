@@ -1,0 +1,54 @@
+/*
+Problem: Spiral Matrix
+Platform: LeetCode
+Difficulty: Medium
+
+Logic:
+Maintain four boundaries: top, bottom, left, and right.
+Traverse the matrix layer by layer in spiral order:
+- Move from left to right across the top row, then increment top.
+- Move from top to bottom along the right column, then decrement right.
+- If rows remain, move from right to left across the bottom row, then decrement bottom.
+- If columns remain, move from bottom to top along the left column, then increment left.
+Continue until all elements are visited.
+
+Time Complexity: O(m * n)
+Space Complexity: O(1)
+*/
+
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+       List <Integer> ds=new ArrayList<>();
+       int top=0;
+       int bottom=matrix.length-1;
+       int left=0;
+       int right=matrix[0].length-1;
+       while(top<=bottom && left<=right){
+         
+         for(int i=left;i<=right;i++){
+              ds.add(matrix[left][i]);
+         }
+         top++;
+
+         for(int i=top;i<=bottom;i++){
+              ds.add(matrix[i][right]);
+       }
+       right--;
+       
+       if(top<=bottom){
+        for(int i=right;i>=left;i--){
+            ds.add(matrix[bottom][i]);
+        }
+       }
+       bottom--;
+
+       if(left<=right){
+         for(int i=bottom;i>=top;i--){
+            ds.add(matrix[i][left]);
+         }
+       }
+       left++;
+       }
+       return ds;
+    }
+}
