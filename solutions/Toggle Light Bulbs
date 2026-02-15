@@ -1,0 +1,32 @@
+/*
+Problem: Toggle Light Bulbs
+Platform: LeetCode
+Difficulty: Medium
+
+Logic:
+Count how many times each bulb number appears using a HashMap.
+A bulb toggled an odd number of times remains ON,
+while a bulb toggled an even number of times ends OFF.
+Collect all bulb numbers with odd frequencies.
+Sort the resulting list and return it.
+
+Time Complexity: O(n log n)
+Space Complexity: O(n)
+*/
+class Solution {
+    public List<Integer> toggleLightBulbs(List<Integer> bulbs) {
+        ArrayList<Integer> lis=new ArrayList<>();
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int i=0;i<bulbs.size();i++){
+            int val=bulbs.get(i);
+            map.put(val,map.getOrDefault(val,0)+1);
+        }
+        for(Map.Entry<Integer,Integer> entry:map.entrySet()){
+            if(entry.getValue()%2!=0){
+                lis.add(entry.getKey());
+            }
+        }
+        Collections.sort(lis);
+        return lis;
+    }
+}
