@@ -1,0 +1,36 @@
+/*
+Problem: Weighted Word Mapping
+Platform: LeetCode
+Difficulty: easy
+
+Logic:
+Create a reverse alphabet mapping where index 0 → 'z', 1 → 'y', … 25 → 'a'.
+For each word, compute the total weight by summing the weights of its characters.
+Take the total weight modulo 26 to obtain an index.
+Use this index to select the corresponding character from the reverse alphabet array.
+Append the character to the result string for each word.
+
+Time Complexity: O(total characters in all words)
+Space Complexity: O(1)
+*/
+class Solution {
+    public String mapWordWeights(String[] words, int[] weights) {
+        char [] arr=new char[26];
+        for(int i=0;i<26;i++){
+            arr[i]=(char)('z'-i);
+        }
+        String ans="";
+        for(int i=0;i<words.length;i++){
+            String a=words[i];
+            int sum=0;
+            for(int j=0;j<a.length();j++){
+                char ch=a.charAt(j);
+                int idx=ch-'a';
+                sum+=weights[idx];}
+    
+                 int avg=sum%26;
+                 ans+=arr[avg];
+                }
+              return ans;  
+            }
+          }
