@@ -1,0 +1,13 @@
+class Main{
+    public int nums(int n){
+        if(n==1){
+            return 1;
+        }
+      
+        return n*nums(n-1);
+    }
+    public static void main(String []args){
+        Main s1=new Main();
+        System.out.print(s1.nums(5));
+    }
+}
